@@ -6,8 +6,15 @@ namespace Inlamningsuppgift
 {
     class Participant
     {
-        public Participant(string status, string birthMonth, int age, string hobby, string typeOfHabitation, string favoriteCandy, string education, string favoriteSeason, string favoriteFood, string favoriteAnimal)
+        public Participant()
         {
+
+        }
+
+        public Participant(string firstName, string lastName, string status, string birthMonth, int age, string hobby, string typeOfHabitation, string favoriteCandy, string education, string favoriteSeason, string favoriteFood, string favoriteAnimal)
+        {
+            FirstName = firstName;
+            LastName = lastName;
             Status = status;
             BirthMonth = birthMonth;
             Age = age;
@@ -20,6 +27,8 @@ namespace Inlamningsuppgift
             FavoriteFood = favoriteFood;
         }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Status { get; set; }
         public string BirthMonth { get; set; }
         public string TypeOfHabitation { get; set; }
@@ -30,6 +39,11 @@ namespace Inlamningsuppgift
         public string FavoriteSeason { get; set; }
         public string FavoriteFood { get; set; }
         public string FavoriteAnimal { get; set; }
+
+        public override string ToString()
+        {
+            return $"";
+        }
 
     }
 }
