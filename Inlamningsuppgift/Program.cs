@@ -58,10 +58,10 @@ namespace Inlamningsuppgift
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
                         Console.Clear();
-                        ParticipantDetails();
+                        ParticipantOption();
                         break;
                 }
-            } while (open == false);
+            } while (open == true);
         }
 
         //Display all participants
@@ -86,8 +86,33 @@ namespace Inlamningsuppgift
             MainMenu();
         }
 
+        public static void ParticipantOption()
+        {
+            Console.WriteLine("Choose an option");
+            Console.WriteLine("1. Show Participant details");
+            Console.WriteLine("2. Remove participant");
 
-        public static void ParticipantDetails()
+            var cki = Console.ReadKey();
+            bool open = true;
+
+            do
+            {
+                switch (cki.Key)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        ShowDetails();
+                        break;
+
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        RemoveParticipant();
+                        break;
+                }
+            } while (open == true);
+        }
+
+        public static void ShowDetails()
         {
             Console.WriteLine("Choose participant");
 
@@ -108,6 +133,24 @@ namespace Inlamningsuppgift
             Console.WriteLine(participant.ParticipantDetails(participant));
 
             Console.ReadLine();
+
+            MainMenu();
+        }
+
+        private static void RemoveParticipant()
+        {
+            Console.WriteLine("Choose participant");
+
+            for (int i = 0; i < participants.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {participants[i].FirstName}");
+            }
+
+            int namePos = Convert.ToInt32(Console.ReadLine());
+
+            participants.RemoveAt(namePos - 1);
+
+            ShowDetails();
         }
 
 
