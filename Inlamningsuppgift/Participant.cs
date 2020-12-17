@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Inlamningsuppgift
 {
     class Participant
     {
+        //Fields
         private string firstName;
         private string lastName;
         private string status;
@@ -18,13 +20,15 @@ namespace Inlamningsuppgift
         private string favoriteSeason;
         private string education;
         private string favoriteFood;
+        private string uniqueString;
 
+        //Constructors
         public Participant()
         {
 
         }
 
-        public Participant(string firstName, string lastName, string status, string birthMonth, int age, string hobby, string typeOfHabitation, string favoriteCandy, string education, string favoriteSeason, string favoriteFood, string favoriteAnimal)
+        public Participant(string firstName, string lastName, string status, string birthMonth, int age, string hobby, string typeOfHabitation, string favoriteCandy, string education, string favoriteSeason, string favoriteFood, string favoriteAnimal, string uniqueString)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -38,8 +42,16 @@ namespace Inlamningsuppgift
             this.favoriteSeason = favoriteSeason;
             this.education = education;
             this.favoriteFood = favoriteFood;
+            this.uniqueString = uniqueString;
         }
 
+        //Class Methods
+        public virtual string ParticipantDetails(Participant participant)
+        {
+            return string.Join("\r\n", participant.GetType().GetProperties().Select(prop => prop.GetValue(participant)));
+        }
+
+        //Gets and Sets
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public string Status { get => status; set => status = value; }
@@ -52,7 +64,6 @@ namespace Inlamningsuppgift
         public string FavoriteSeason { get => favoriteSeason; set => favoriteSeason = value; }
         public string FavoriteFood { get => favoriteFood; set => favoriteFood = value; }
         public string FavoriteAnimal { get => favoriteAnimal; set => favoriteAnimal = value; }
-
-        
+        public string UniqueString { get => uniqueString; set => uniqueString = value; }
     }
 }
