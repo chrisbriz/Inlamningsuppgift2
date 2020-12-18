@@ -46,7 +46,8 @@ namespace Inlamningsuppgift
         }
 
         //Class Methods
-        public virtual string ParticipantDetails(Participant participant)
+        //Get all properties from object
+        public virtual string GetParticipantDetails(Participant participant)
         {
             return string.Join("\r\n", participant.GetType().GetProperties().Select(prop => prop.GetValue(participant)));
         }
